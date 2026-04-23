@@ -1,0 +1,83 @@
+{
+  "Users": [
+    { "Username": "Admin", "Password": "123", "Email": "Admin@local", "IsActive": true },
+    { "Username": "jnavarro", "Password": "0000", "Email": "jnavarro@local", "IsActive": true }
+  ],
+  "Catalogs": [
+    { "Code": 100, "Name": "Ciudades" },
+    { "Code": 101, "ParentCode": 100, "Name": "Managua" },
+    { "Code": 102, "ParentCode": 100, "Name": "León" },
+
+    { "Code": 200, "Name": "Tipos de Cliente" },
+    { "Code": 201, "ParentCode": 200, "Name": "Natural" },
+    { "Code": 202, "ParentCode": 200, "Name": "Jurídico" },
+
+    { "Code": 300, "Name": "Tipos de Vehículo" },
+    { "Code": 301, "ParentCode": 300, "Name": "Sedán" },
+    { "Code": 302, "ParentCode": 300, "Name": "SUV" },
+
+    { "Code": 400, "Name": "Estados de Vehículo" },
+    { "Code": 401, "ParentCode": 400, "Name": "Activo" },
+    { "Code": 402, "ParentCode": 400, "Name": "Mantenimiento" },
+    { "Code": 403, "ParentCode": 400, "Name": "Prestado" },
+    { "Code": 404, "ParentCode": 400, "Name": "Inactivo" },
+    { "Code": 405, "ParentCode": 400, "Name": "Baja Temporal" },
+
+    { "Code": 500, "Name": "Estados de Préstamo" },
+    { "Code": 501, "ParentCode": 500, "Name": "Activo" },
+    { "Code": 502, "ParentCode": 500, "Name": "Cerrado" },
+
+    { "Code": 600, "Name": "Contextos de Mantenimiento" },
+    { "Code": 601, "ParentCode": 600, "Name": "Normal" },
+    { "Code": 602, "ParentCode": 600, "Name": "Asociado" },
+
+    { "Code": 700, "Name": "Estados de Mantenimiento" },
+    { "Code": 701, "ParentCode": 700, "Name": "Pendiente" },
+    { "Code": 702, "ParentCode": 700, "Name": "Realizado" },
+
+    { "Code": 800, "Name": "Estados de Factura" },
+    { "Code": 801, "ParentCode": 800, "Name": "Pendiente" },
+    { "Code": 802, "ParentCode": 800, "Name": "Pagada" },
+
+    { "Code": 900, "Name": "Marcas" },
+    { "Code": 901, "ParentCode": 900, "Name": "Toyota" },
+    { "Code": 902, "ParentCode": 900, "Name": "Nissan" }
+  ],
+  "Fees": [
+    { "Name": "Por Día", "Amount": 10.0, "IsActive": true, "EffectiveFrom": "2026-03-23T00:00:00Z" },
+    { "Name": "Por Semana", "Amount": 60.0, "IsActive": true, "EffectiveFrom": "2026-03-23T00:00:00Z" }
+  ],
+  "WorkTypes": [
+    { "Name": "Mantenimiento", "IsBillable": false, "IsActive": true },
+    { "Name": "Reparación", "IsBillable": true, "IsActive": true }
+  ],
+  "Vehicles": [
+    { "Plate": "ABC-123", "Vin": "VIN0001", "BrandCode": 901, "Model": "Corolla", "VehicleTypeCode": 301, "Year": 2020, "StatusCode": 401 },
+    { "Plate": "XYZ-789", "Vin": "VIN0002", "BrandCode": 902, "Model": "X-Trail", "VehicleTypeCode": 302, "Year": 2022, "StatusCode": 401 },
+    { "Plate": "DEF-234", "Vin": "VIN0003", "BrandCode": 901, "Model": "Yaris", "VehicleTypeCode": 301, "Year": 2019, "StatusCode": 401 },
+    { "Plate": "GHI-345", "Vin": "VIN0004", "BrandCode": 902, "Model": "Sentra", "VehicleTypeCode": 301, "Year": 2018, "StatusCode": 401 },
+    { "Plate": "JKL-456", "Vin": "VIN0005", "BrandCode": 901, "Model": "RAV4", "VehicleTypeCode": 302, "Year": 2021, "StatusCode": 401 },
+    { "Plate": "MNO-567", "Vin": "VIN0006", "BrandCode": 902, "Model": "Qashqai", "VehicleTypeCode": 302, "Year": 2020, "StatusCode": 401 },
+    { "Plate": "PQR-678", "Vin": "VIN0007", "BrandCode": 901, "Model": "Corolla", "VehicleTypeCode": 301, "Year": 2017, "StatusCode": 401 },
+    { "Plate": "STU-789", "Vin": "VIN0008", "BrandCode": 902, "Model": "X-Trail", "VehicleTypeCode": 302, "Year": 2016, "StatusCode": 401 },
+    { "Plate": "VWX-890", "Vin": "VIN0009", "BrandCode": 901, "Model": "Hilux", "VehicleTypeCode": 302, "Year": 2022, "StatusCode": 401 },
+    { "Plate": "YZA-901", "Vin": "VIN0010", "BrandCode": 902, "Model": "Frontier", "VehicleTypeCode": 302, "Year": 2015, "StatusCode": 401 }
+  ],
+  "Clients": [
+    { "FirstName": "Juan", "SecondName": "Carlos", "LastName": "Navarro", "SecondLastName": "García", "Address": "Calle Principal #123", "CityCode": 101, "ClientTypeCode": 201, "IdentificationNumber": "001-010190-0001A", "Phone": "8888-1111", "Email": "juan.navarro@email.com", "CreatedByUsername": "jnavarro" },
+    { "FirstName": "María", "SecondName": "Isabel", "LastName": "López", "SecondLastName": "Méndez", "Address": "Avenida Central #456", "CityCode": 102, "ClientTypeCode": 201, "IdentificationNumber": "002-020290-0002B", "Phone": "8888-2222", "Email": "maria.lopez@email.com", "CreatedByUsername": "jnavarro" },
+    { "FirstName": "Carlos", "SecondName": "Andrés", "LastName": "Pérez", "SecondLastName": "Rodríguez", "Address": "Residencial Los Robles #789", "CityCode": 101, "ClientTypeCode": 201, "IdentificationNumber": "003-030390-0003C", "Phone": "8888-3333", "Email": "carlos.perez@email.com", "CreatedByUsername": "jnavarro" },
+    { "FirstName": "Ana", "SecondName": "Lucía", "LastName": "Martínez", "SecondLastName": "Castro", "Address": "Colonia Centroamérica #321", "CityCode": 102, "ClientTypeCode": 201, "IdentificationNumber": "004-040490-0004D", "Phone": "8888-4444", "Email": "ana.martinez@email.com", "CreatedByUsername": "jnavarro" },
+    { "FirstName": "José", "SecondName": "Luis", "LastName": "González", "SecondLastName": "Morales", "Address": "Barrio San Judas #654", "CityCode": 101, "ClientTypeCode": 201, "IdentificationNumber": "005-050590-0005E", "Phone": "8888-5555", "Email": "jose.gonzalez@email.com", "CreatedByUsername": "jnavarro" },
+
+    { "BusinessName": "Inversiones Navarro S.A.", "CommercialName": "Inversiones Navarro", "Address": "Centro Comercial Galerías #1", "CityCode": 101, "ClientTypeCode": 202, "IdentificationNumber": "J0310000012345", "Phone": "2278-1111", "Email": "contacto@inversionesnavarro.com", "CreatedByUsername": "jnavarro" },
+    { "BusinessName": "Constructora León S.A.", "CommercialName": "ConstruLeón", "Address": "Zona Industrial #45", "CityCode": 102, "ClientTypeCode": 202, "IdentificationNumber": "J0310000012346", "Phone": "2311-2222", "Email": "info@construleon.com", "CreatedByUsername": "jnavarro" },
+    { "BusinessName": "Distribuidora del Pacífico S.A.", "CommercialName": "Distripac", "Address": "Carretera Sur Km 12", "CityCode": 101, "ClientTypeCode": 202, "IdentificationNumber": "J0310000012347", "Phone": "2248-3333", "Email": "ventas@distripac.com", "CreatedByUsername": "jnavarro" },
+    { "BusinessName": "Servicios Múltiples Leal EIRL", "CommercialName": "ServiLeal", "Address": "Costado Norte del Estadio", "CityCode": 102, "ClientTypeCode": 202, "IdentificationNumber": "J0310000012348", "Phone": "2311-4444", "Email": "admin@servileal.com", "CreatedByUsername": "jnavarro" },
+    { "BusinessName": "Tecnología y Sistemas S.A.", "CommercialName": "Tecsys", "Address": "Rotonda El Güegüense 1c al Sur", "CityCode": 101, "ClientTypeCode": 202, "IdentificationNumber": "J0310000012349", "Phone": "2255-5555", "Email": "soporte@tecsys.com", "CreatedByUsername": "jnavarro" }
+  ],
+  "Employees": [
+    { "FirstName": "Admin", "LastName": "Admin", "Address": "Calle 1", "CityCode": 101, "IsActive": true, "Username": "Admin" },
+    { "FirstName": "Juan", "LastName": "Navarro", "Address": "Calle 2", "CityCode": 101, "IsActive": true, "Username": "jnavarro" }
+  ]
+}
