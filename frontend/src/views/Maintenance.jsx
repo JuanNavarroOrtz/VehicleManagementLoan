@@ -91,7 +91,7 @@ const Maintenance = () => {
     try {
       const payload = {
         ...formData,
-        vehicleId: parseInt(formData.vehicleId),
+        vehicleId: parseInt(formData.vehicleId) ?? 0,
         loanId: formData.loanId ? parseInt(formData.loanId) : null,
         maintenanceContextTypeId: parseInt(formData.maintenanceContextTypeId),
         workTypeId: parseInt(formData.workTypeId),

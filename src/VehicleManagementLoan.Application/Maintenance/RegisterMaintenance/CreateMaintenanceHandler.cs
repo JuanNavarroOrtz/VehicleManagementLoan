@@ -29,11 +29,8 @@ public sealed class CreateMaintenanceHandler(
         CreateMaintenanceCommand command,
         CancellationToken cancellationToken = default)
     {
-        var vehicle = await vehicleRepository.GetByIdAsync(command.VehicleId, cancellationToken);
-        if (vehicle is null)
-        {
-            throw new ApplicationLayerException("No se encontró el vehículo.");
-        }
+        int _VehicleId = command.VehicleId ?? 0;
+        
 
         if (command.LoanId.HasValue)
         {
@@ -42,6 +39,13 @@ public sealed class CreateMaintenanceHandler(
             {
                 throw new ApplicationLayerException("No se encontró el préstamo asociado.");
             }
+            _VehicleId = loan.VehicleId; // Asegura que el mantenimiento se asocie al vehículo correcto del préstamo
+        }
+
+        var vehicle = await vehicleRepository.GetByIdAsync(_VehicleId, cancellationToken);
+        if (vehicle is null)
+        {
+            throw new ApplicationLayerException("No se encontró el vehículo.");
         }
 
         var workType = await workTypeRepository.GetByIdAsync(command.WorkTypeId, cancellationToken);
@@ -58,7 +62,7 @@ public sealed class CreateMaintenanceHandler(
 
         var maintenanceRecord = new MaintenanceRecord
         {
-            VehicleId = command.VehicleId,
+            VehicleId = _VehicleId,
             LoanId = command.LoanId,
             MaintenanceContextTypeId = command.MaintenanceContextTypeId,
             WorkTypeId = command.WorkTypeId,

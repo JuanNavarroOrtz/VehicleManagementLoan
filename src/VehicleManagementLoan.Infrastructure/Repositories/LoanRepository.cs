@@ -36,7 +36,7 @@ public sealed class LoanRepository(ApplicationDbContext context) : ILoanReposito
             var nextNumber = 1;
             if (!string.IsNullOrEmpty(last))
             {
-                var m = Regex.Match(last, @"\\d+$");
+                var m = Regex.Match(last, @"\d+$");
                 if (m.Success && int.TryParse(m.Value, out var n))
                 {
                     nextNumber = n + 1;

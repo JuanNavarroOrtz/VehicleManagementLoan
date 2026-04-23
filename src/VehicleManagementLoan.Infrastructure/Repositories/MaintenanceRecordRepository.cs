@@ -3,7 +3,7 @@ using VehicleManagementLoan.Application.Common.Dtos;
 using VehicleManagementLoan.Application.Common.Interfaces;
 using VehicleManagementLoan.Domain.Entities;
 using VehicleManagementLoan.Infrastructure.Persistence;
-
+using System.Text.RegularExpressions;
 namespace VehicleManagementLoan.Infrastructure.Repositories;
 
 /// <summary>
@@ -17,6 +17,7 @@ public sealed class MaintenanceRecordRepository(ApplicationDbContext context) : 
         // Generar Consecutive automático si no se proporcionó
         if (string.IsNullOrWhiteSpace(maintenanceRecord.Consecutive))
         {
+            //buscar el ultimo consecutive y generar el siguiente            
             const string prefix = "MT-";
             var last = await context.MaintenanceRecords
                 .Where(m => m.Consecutive != null && m.Consecutive.StartsWith(prefix))
@@ -25,9 +26,11 @@ public sealed class MaintenanceRecordRepository(ApplicationDbContext context) : 
                 .FirstOrDefaultAsync(cancellationToken);
 
             var nextNumber = 1;
+            //analiza si hay un numero detras del prefijo MT-
             if (!string.IsNullOrEmpty(last))
             {
-                var m = System.Text.RegularExpressions.Regex.Match(last, "\\\\d+$");
+                //busca el ultimo numero despues del prefijo MT- y le suma 1 para generar el siguiente consecutivo
+                var m = Regex.Match(last, @"\d+$");
                 if (m.Success && int.TryParse(m.Value, out var n))
                 {
                     nextNumber = n + 1;

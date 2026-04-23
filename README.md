@@ -33,24 +33,23 @@ Pasos para ejecutar localmente (recomendado)
 
 2) Configurar la cadena de conexión (API project):
    - Usar User Secrets en desarrollo:
+    --Navegar a la carpeta VehicleManagementLoan
      cd src\VehicleManagementLoan.API
+    -- Configurar la cadena de conexión
      dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=YOUR_SERVER;Database=VehicleManagementLoanDB;User Id=sa;Password=YOUR_PASSWORD;TrustServerCertificate=True"
 
 3) Aplicar migraciones y/o crear nuevas migraciones
-   - IMPORTANTE: EF Tools necesita poder crear el DbContext en tiempo de diseño. La forma recomendada es indicar el proyecto "startup" (API) que configura DI y la cadena de conexión.
+   - Listar migraciones existentes: $env:ASPNETCORE_ENVIRONMENT = 'Development'
+    --Lista migraciones existentes
+    dotnet ef migrations list --project src\VehicleManagementLoan.Infrastructure --startup-project src\VehicleManagementLoan.API
 
-   - Listar migraciones existentes:
-     $env:ASPNETCORE_ENVIRONMENT = 'Development'
-     dotnet ef migrations list --project src\VehicleManagementLoan.Infrastructure --startup-project src\VehicleManagementLoan.API
-
-   - Crear una nueva migración (cuando cambias el modelo):
-     $env:ASPNETCORE_ENVIRONMENT = 'Development'
-     dotnet ef migrations add NombreMigracion --project src\VehicleManagementLoan.Infrastructure --startup-project src\VehicleManagementLoan.API --context ApplicationDbContext
+   - Crear una nueva migración (cuando cambias el modelo): $env:ASPNETCORE_ENVIRONMENT = 'Development'
+    --Crea migraciones nuevas: Cambiar el nombre de la migración segun el cambio realizado
+     dotnet ef migrations add updateMigrations --project src\VehicleManagementLoan.Infrastructure --startup-project src\VehicleManagementLoan.API --context ApplicationDbContext
 
    - Aplicar migraciones a la base de datos:
      dotnet ef database update --project src\VehicleManagementLoan.Infrastructure --startup-project src\VehicleManagementLoan.API --context ApplicationDbContext
 
-   - Alternativa: si NO quieres usar --startup-project puedes agregar un DesignTimeDbContextFactory en el proyecto Infrastructure. Esto permite que EF cree el DbContext en diseño sin depender de la API.
 
 4) Ejecutar la API (seed en Development)
    - El initializer carga seed JSON desde `src/VehicleManagementLoan.Infrastructure/SeedData/initialData.json` cuando ASPNETCORE_ENVIRONMENT == Development.
@@ -75,4 +74,7 @@ Seed y datos
 
 Swagger
 - Al ejecutar la API, Swagger disponible en /swagger (p. ej. https://localhost:5071/swagger)
+
+
+5) Leer readme de carpeta frontend para correr el proyecto.
 

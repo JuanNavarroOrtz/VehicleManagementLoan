@@ -2,7 +2,7 @@ namespace VehicleManagementLoan.Application.Maintenance.RegisterMaintenance;
 
 public sealed class CreateMaintenanceCommand
 {
-    public int VehicleId { get; init; }
+    public int? VehicleId { get; init; }
     public int? LoanId { get; init; }
     public int MaintenanceContextTypeId { get; init; }
     public int WorkTypeId { get; init; }
